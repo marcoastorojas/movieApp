@@ -1,0 +1,13 @@
+.form-create-episode{
+}
+.hide{
+    display: none;
+
+}
+.show{
+    display: block;
+}
+.season-content{
+    border: 1px solid red;
+    margin: 10px;
+}

@@ -1,0 +1,45 @@
+<p>movie works!</p>
+<h2>new movie</h2>
+<div class="content">
+    <form [formGroup]="formMovie" (ngSubmit)="postMovie()">
+        <input type="text" placeholder="title" formControlName="title">
+        <div *ngIf="formMovie.invalid&&formMovie.controls.title.touched">
+            <p *ngIf="formMovie.controls.title.errors">la pelicula ya existe</p>
+        </div>
+        <br>
+        <input type="text" placeholder="image" formControlName="image">
+        <div *ngIf="formMovie.invalid&&formMovie.controls.image.touched">
+            <p *ngIf="formMovie.controls.image.errors">iamge is required</p>
+        </div>
+        <br>
+        <input type="text" placeholder="overview" formControlName="overview">
+        <div *ngIf="formMovie.invalid&&formMovie.controls.overview.touched">
+            <p *ngIf="formMovie.controls.overview.errors">iamge is required</p>
+        </div>
+        <h3>search actors for your movie</h3>
+        <p (click)="deleteActor(actor.id)" *ngFor="let actor of actors">
+            X. {{actor.name}}
+        </p>
+        <app-input-devounce placeholder="search actors" (ondebouncer)="searchActor($event)"></app-input-devounce>
+        <ul>
+            <li (click)="addActor(actor.id)" *ngFor="let actor of actorsAvailable">
+                <div>{{actor.name}}</div>
+                <img [src]="actor.image" [alt]="actor.name"
+                    onError="this.src='https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133352010-stock-illustration-default-placeholder-man-and-woman.jpg'">
+            </li>
+        </ul>
+
+        <h3>select categories for your movie</h3>
+        <div (click)="addCategory(category.id)" *ngFor="let category of categories">
+            <div>{{category.name}}</div>
+            <div [ngStyle]="{'backgroundColor': category.color,'width': '100px', height:'10px'}"></div>
+        </div>
+        <ul>
+            <li (click)="addCategory(category.id)" *ngFor="let category of categoriesAvailables">
+                <div>{{category.name}}</div>
+                <div [ngStyle]="{'backgroundColor': category.color,'width': '100px', height:'100px'}"></div>
+            </li>
+        </ul>
+        <button>create Movie</button>
+    </form>
+</div>

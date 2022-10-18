@@ -1,0 +1,16 @@
+<p>actors works!</p>
+<form [formGroup]="categoryForm" (ngSubmit)="postCategory()">
+    <input placeholder="name of category" formControlName="name">
+    <!-- <p *ngIf="validateInput('name')">this stack is required</p> -->
+    <br>
+    <input placeholder="color" name="color" formControlName="color">
+    <!-- <p *ngIf="validateInput('image')">this stack is required</p> -->
+    <br>
+    <button>add actor</button>
+</form>
+<ul>
+    <li *ngFor="let category of categories">
+        <div>{{category.name}}</div>
+        <div [ngStyle]="{'backgroundColor': category.color,'width': '100px', height:'100px'}"></div>
+    </li>
+</ul>

@@ -1,0 +1,31 @@
+<div class="fondo">
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <form>
+        <h3>Register Here</h3>
+
+        <label for="name">Name</label>
+        <input name="name" type="text" placeholder="Name" id="name" [(ngModel)]="this.account.name">
+
+        <label for="username">Email</label>
+        <input name="email" type="text" placeholder="Email" id="username" [(ngModel)]="this.account.email">
+
+        <label for="password">Password</label>
+        <input name="password" type="password" placeholder="Password" id="password" [(ngModel)]="this.account.password">
+
+        <button [disabled]="this.loading" class="login" (click)="handleSubmit()">Sign Up</button>
+        <div class="social">
+            <div class="go"><i class="fab fa-google"></i> Google</div>
+            <div class="fb"><i class="fab fa-facebook"></i> Facebook</div>
+        </div>
+        <p style="color: white;padding-top: 3px;" routerLink="/auth/login">
+            do you have aready account?
+            <span style="color:rgb(0, 166, 172);cursor:pointer;" routerLink="/auth/login">
+                Sign In
+            </span>
+        </p>
+
+    </form>
+</div>

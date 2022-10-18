@@ -1,0 +1,6 @@
+<p>form-episode works!</p>
+<form (ngSubmit)="sendEpisodeBody()" [formGroup]="formEpisode">
+    <input type="text" placeholder="name of episode" formControlName="name">
+    <input type="text" placeholder="name of episode" formControlName="chapter_number">
+    <button>create episode</button>
+</form>

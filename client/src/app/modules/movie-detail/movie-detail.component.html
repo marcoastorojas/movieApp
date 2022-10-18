@@ -1,0 +1,8 @@
+<div *ngIf="info">
+    <p>titulo: {{info.title}}</p>
+    <p>imagen: {{info.image}}</p>
+    <div *ngFor="let actor of info.actors" class="card-actor">
+        <p>nombre:{{actor.name}}</p>
+        <p>id:{{actor.id}}</p>
+    </div>
+</div>

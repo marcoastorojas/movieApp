@@ -1,13 +1,20 @@
 const { Sequelize } = require('sequelize');
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env
 
+// const db = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`, {
+const db = new Sequelize(`postgres://zvsqjith:mBLM75Wh-lQZrgyZmnUZA-LlOWPWAoZw@mouse.db.elephantsql.com/zvsqjith`, {
+    logging: false,
+    native: false,
+    define: {
+        timestamps: false
+    }
+});
 const connectPostgres = new Promise((resolve, reject) => {
-    const db = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`, {
-        logging: false,
-        native: false,
-    });
-    db.sync({ force: true })
+    db.sync({ force: false })
         .then(resolve)
         .catch(reject)
 })
-module.exports = connectPostgres
+module.exports = {
+    db,
+    connectPostgres
+}

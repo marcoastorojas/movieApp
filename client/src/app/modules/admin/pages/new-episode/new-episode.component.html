@@ -1,0 +1,25 @@
+<p>new-episode works!</p>
+<div>
+    <h2>search serie</h2>
+    <app-input-devounce (ondebouncer)="searchSerie($event)"></app-input-devounce>
+    <div *ngFor="let serie of series" (click)="getDataSerie(serie.id)">{{serie.title}}</div>
+    <hr>
+    <div *ngIf="serieSelected">
+        <p>{{serieSelected.title}}</p>
+        <p>number of seasons = {{serieSelected.seasons.length}}</p>
+        <ul>
+            <li *ngFor="let season of serieSelected.seasons" class="season-content">
+                <div *ngFor="let chapter of season.chapters">
+                    <p>{{chapter.name}}</p>
+                    <hr>
+                </div>
+                <div class="formNewChapter">
+                    <div (click)="toggleForm()">Create new episode</div>
+                    <app-form-episode (episodeForm)="createEpisode(season.id,$event)" [listEpisodes]="season.chapters">
+                    </app-form-episode>
+                </div>
+            </li>
+        </ul>
+        <button (click)="createNewSeason()">new Season</button>
+    </div>
+</div>

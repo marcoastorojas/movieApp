@@ -1,0 +1,9 @@
+<div class="topnav" id="myTopnav">
+    <a [routerLinkActiveOptions]='{exact:true}' routerLinkActive="active" [routerLink]='["/movies"]'>Movies</a>
+    <a routerLinkActive="active" [routerLink]='["/series"]'>Series</a>
+    <a routerLinkActive="active" routerLink="/favorites">Favorites</a>
+    <a routerLinkActive="active" routerLink="/history">History</a>
+    <a routerLinkActive="active" routerLink="/admin">admin</a>
+    <a routerLinkActive="active" style="color:white;" routerLink="/dashboard">{{this.name}}</a>
+    <a routerLink="/auth" (click)="logout()">Salir</a>
+</div>

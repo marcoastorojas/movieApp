@@ -1,0 +1,8 @@
+.active-link {
+    background-color: black;
+    color: white;
+}
+
+.pointer {
+    cursor: pointer;
+}
