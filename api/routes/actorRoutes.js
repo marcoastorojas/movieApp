@@ -3,6 +3,7 @@ const { body, param, validationResult, query } = require("express-validator")
 const { Op } = require("sequelize")
 const { validateResult } = require("../helpers/validateResults")
 const Actor = require("../models/Actor")
+const Movie = require("../models/Movie")
 
 const actorRouter = Router()
 actorRouter.post("/", [body('name').exists(), validateResult], async (req, res) => {
@@ -11,9 +12,13 @@ actorRouter.post("/", [body('name').exists(), validateResult], async (req, res) 
 })
 
 // no protected route
-actorRouter.get("/:id", [param("id").isUUID(), validationResult], async (req, res) => {
-    const actor = await Actor.findByPk(req.param.id)
-    if (!actor) res.status(404).json({ ok: false, message: `has no a valid actor with the id: ${req.param.id}` })
+actorRouter.get(
+    "/:id", 
+    [param("id").isUUID(), validateResult],
+     async (req, res) => {
+    const actor = await Actor.findByPk(req.params.id,{include:Movie})
+    if (!actor) return res.status(404).json({ ok: false, message: `has no a valid actor with the id: ${req.param.id}` })
+    res.status(200).json({ ok: true, actor })
 })
 
 // no protected route
@@ -25,7 +30,7 @@ actorRouter.get("/", async (req, res) => {
 })
 
 actorRouter.delete("/:id", [param("id").isUUID(), validationResult], async (req, res) => {
-    const actorToDelete = await Actor.findByPk(req.param.id)
+    const actorToDelete = await Actor.findByPk(req.params.id)
     await actorToDelete.destroy()
     res.status(200).json({ ok: true, deleteActor: actorToDelete })
 })

@@ -1,7 +1,12 @@
 <div *ngIf="info">
     <p>titulo: {{info.title}}</p>
     <p>imagen: {{info.image}}</p>
-    <div *ngFor="let actor of info.actors" class="card-actor">
+    <div *ngFor="let category of info.categories">
+        <p>{{category.name}}</p>
+    </div>
+    <hr>
+    <p>Actores:</p>
+    <div *ngFor="let actor of info.actors" class="card-actor" [routerLink]="['/actor',actor.id]">
         <p>nombre:{{actor.name}}</p>
         <p>id:{{actor.id}}</p>
     </div>
