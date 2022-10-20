@@ -2,7 +2,7 @@
     <p>titulo: {{info.title}}</p>
     <p>imagen: {{info.image}}</p>
     <div *ngFor="let category of info.categories">
-        <p>{{category.name}}</p>
+        <p [routerLink]="['/movies',category.id]">{{category.name}}</p>
     </div>
     <hr>
     <p>Actores:</p>

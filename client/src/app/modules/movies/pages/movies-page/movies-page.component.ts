@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../auth/services/auth.service';
-import { FavoritesService } from '../../favorites/services/favorites.service';
-import { MoviesService } from '../services/movies.service';
+import { AuthService } from '../../../auth/services/auth.service';
+import { FavoritesService } from '../../../favorites/services/favorites.service';
+import { MoviesService } from '../../services/movies.service';
 
 @Component({
   selector: 'app-movies-page',

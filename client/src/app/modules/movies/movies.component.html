@@ -1,0 +1,2 @@
+<p *ngFor="let category of categories" [routerLink]="['/movies',category.id]">{{category.name}}</p>
+<router-outlet></router-outlet>

@@ -17,8 +17,6 @@ export class MovieDetailComponent implements OnInit {
       this.http.get(`http://localhost:3001/movie/${id}`)
         .subscribe((data:any)=>{
           if(data.ok){
-            console.log(data);
-            
             this.info= data.movie
           }
         })
