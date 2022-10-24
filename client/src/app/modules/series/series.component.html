@@ -1,2 +1,13 @@
 <p>series works!</p>
-<p>{{series|json}}</p>
+<div *ngFor="let serie of series">
+    <p>{{serie.title}}</p>
+    <div (click)="deleteFavorite(serie.id)" *ngIf="isFavorite(serie.id) else noFavorite">
+        Eliminar favorito
+    </div>
+    <ng-template #noFavorite>
+        <div (click)="addFavorite(serie)">
+            Agregar favorito
+        </div>
+    </ng-template>
+    <hr>
+</div>

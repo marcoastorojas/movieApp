@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/modules/auth/services/auth.service';
 import { MoviesService } from '../../services/movies.service';
 
 @Component({
@@ -9,7 +10,10 @@ import { MoviesService } from '../../services/movies.service';
 })
 export class ByCategoryComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute,private moviesServices:MoviesService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private moviesServices:MoviesService,
+    private authService:AuthService) { }
   movies:any=[]
   ngOnInit(): void {
     this.route.params.subscribe(({ id }) => { 
@@ -19,5 +23,7 @@ export class ByCategoryComponent implements OnInit {
         })
     })
   }
-
+  addFavorite(){
+    
+  }
 }

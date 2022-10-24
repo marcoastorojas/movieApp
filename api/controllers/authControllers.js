@@ -1,5 +1,7 @@
 const { request, response } = require("express");
 const Client = require("../models/Client");
+const Movie = require("../models/Movie");
+const Serie = require("../models/Serie");
 
 const getAllClients = async (req = request, res = response) => {
     const clients = await Client.findAll()
@@ -44,9 +46,20 @@ const renewToken = async (req = request, res = response) => {
     const { token } = req.headers
     try {
         const { userId } = await Client.isValidJwt(token)
-        const user = await Client.findByPk(userId)
+        const user = await Client.findByPk(userId, {
+            include: [
+                { model: Movie, as: "favorites" },
+                { model: Serie, as: "favos" }
+            ]
+        })
         const newToken = user.generateToken()
-        res.status(200).json({ ok: true, data: user, token: newToken })
+        const { favorites:movies, favos:series, ...data } = user.dataValues
+
+        res.status(200).json({
+            ok: true,
+            data:{...data,favorites:{movies,series}},
+            token: newToken,
+        })
     } catch (error) {
         res.status(401).json({ ok: false, message: error.message })
     }

@@ -1,16 +1,15 @@
 <p>movies-page works!</p>
-<p>{{movies|json}}</p>
 <div class="movie-card" *ngFor="let movie of movies" [routerLink]="['/movie',movie.id]">
     <p>{{movie.id}}</p>
     <p>{{movie.title}}</p>
     <p>{{movie.overview}}</p>
     <div *ngIf="favorites">
         <h3 *ngIf="isFavorite(movie.id) else nohay">
-            <button (click)="deleteFavorite(movie.id)">eliminar de favoritos</button>
+            <button (click)="deleteFavorite(movie.id,$event)">eliminar de favoritos</button>
         </h3>
     </div>
     <ng-template #nohay>
-        <button (click)="addFavorite(movie)">agregar a favoritos</button>
+        <button (click)="addFavorite(movie,$event)">agregar a favoritos</button>
     </ng-template>
 </div>
-<button (click)="verfavoritos()">verfavoritos</button>
+<!-- <button (click)="verfavoritos()">verfavoritos</button> -->

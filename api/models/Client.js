@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken")
 const { hashSync, genSaltSync, compareSync } = require("bcrypt");
 const Movie = require("./Movie");
 const Favorite = require("./Favorite");
+const Serie = require("./Serie");
 
 
 const Client = db.define("client", {
@@ -73,5 +74,7 @@ Client.prototype.generateToken = function () {
 Client.belongsToMany(Movie, { through: Favorite, as: "favorites" })
 Movie.belongsToMany(Client, { through: Favorite, as: "favorites" })
 
+Client.belongsToMany(Serie, { through: "favo", as: "favos" })
+Serie.belongsToMany(Client, { through: "favo", as: "favos" })
 
 module.exports = Client

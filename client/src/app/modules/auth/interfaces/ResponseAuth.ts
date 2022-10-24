@@ -11,4 +11,9 @@ export interface UserDb {
     password:    string;
     name?:        string;
     image?:       string;
+    favorites:Favorites
+}
+interface Favorites{
+    movies:any,
+    series:any
 }

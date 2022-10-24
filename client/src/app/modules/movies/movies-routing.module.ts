@@ -8,7 +8,11 @@ const routes: Routes = [
   {
     path: "",
     component: MoviesComponent,
-    children: [{ path: ":id", component: ByCategoryComponent }]
+    children: [
+      { path: "all", component: MoviesPageComponent },
+      { path: ":id", component: ByCategoryComponent },
+      { path:"**", redirectTo:"all" }
+    ]
   }
 ];
 

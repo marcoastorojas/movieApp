@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth/services/auth.service';
+import { FavoritesService } from '../favorites/services/favorites.service';
 import { MoviesService } from './services/movies.service';
 
 @Component({
@@ -9,9 +11,14 @@ import { MoviesService } from './services/movies.service';
 })
 export class MoviesComponent implements OnInit {
 
-  constructor(private moviesService:MoviesService) { }
-  ngOnInit(): void {  }
-  get categories(){
+  constructor(
+    private moviesService: MoviesService,
+    private favoritesService: FavoritesService,
+    private authService: AuthService) {
+
+  }
+  ngOnInit(): void { }
+  get categories() {
     return this.moviesService.categories
   }
 

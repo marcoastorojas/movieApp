@@ -15,24 +15,23 @@ export class MoviesPageComponent implements OnInit {
     private authService: AuthService,
     private moviesService: MoviesService
   ) {
-    this.favoritesService.getFavorites(this.authService.userDb.id)
-      .subscribe(console.log)
+
   }
   get movies() { return this.moviesService.movies }
-  get favorites() { return this.favoritesService.favorites }
+  get favorites() { return this.authService.userDb.favorites.movies }
   ngOnInit(): void { }
   isFavorite(IdMovie: string) {
     return this.favorites.find((movie: any) => movie.id === IdMovie)
   }
-  addFavorite(movie: any) {
-    this.favoritesService.addFavorite(movie, this.authService.userDb.id)
+  addFavorite(movie: any,e:any) {
+    e.stopPropagation()
+    this.authService.addFavorite(movie)
       .subscribe((data: any) => { if (data.ok) { console.log("conexion created") } })
   }
-  deleteFavorite(movieId: string) {
-    this.favoritesService.removeFavorite(movieId, this.authService.userDb.id)
+  deleteFavorite(movieId: string,e:any) {
+    e.stopPropagation()
+    this.authService.removeFavorite(movieId)
       .subscribe((data: any) => { if (data.ok) { console.log("conexion deleted") } })
   }
-  verfavoritos() {
-    console.log(this.favoritesService.favorites)
-  }
+
 }

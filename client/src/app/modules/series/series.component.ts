@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth/services/auth.service';
+import { SeriesService } from './services/series.service';
 
 @Component({
   selector: 'app-series',
@@ -8,12 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SeriesComponent implements OnInit {
 
-  constructor(private http: HttpClient) { }
-  series: any = []
-
+  constructor(private seriesServices: SeriesService, private authServices: AuthService) { }
+  get series() { return this.seriesServices.series }
+  get favorites() { return this.authServices.userDb.favorites.series }
   ngOnInit(): void {
-    this.http.get("http://localhost:3001/serie/")
-      .subscribe((data: any) => this.series = data.results)
   }
-
+  isFavorite(IdSerie: string) {
+    return this.favorites.find((serie: any) => serie.id === IdSerie)
+  }
+  addFavorite(serie: any) {
+    this.authServices.addFavoriteSerie(serie)
+      .subscribe(console.log)
+  }
+  deleteFavorite(serieId:string){
+    this.authServices.removeFavoriteSerie(serieId)
+      .subscribe(console.log)
+  }
 }
