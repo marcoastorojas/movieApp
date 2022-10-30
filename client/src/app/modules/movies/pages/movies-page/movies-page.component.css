@@ -1,4 +1,122 @@
-.movie-card{
+img {
+    width: 100%;
+    height: 100%;
+}
+
+.movie-card {
     border: 1px solid red;
     margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-video {
+    margin: 10px;
+    color: white;
+    width: 300px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+}
+
+.card-video .slide-image {
+    width: 300px;
+    height: 200px;
+    position: absolute;
+    z-index: -1;
+    background-position: center;
+    background-size: cover;
+    border-radius: 6px;
+}
+
+.slide-image img {
+    object-fit: contain;
+}
+
+.card-video .slide-content {
+    width: 100%;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.owl-items {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.slide-play {
+    width: 40px;
+    height: 40px;
+    /* background-color: #d19fa7; */
+    background-color: rgb(160, 118, 118);
+    border-radius: 50px;
+}
+
+.slide-info .tag {
+    margin: 4px;
+    font-size: 12px;
+}
+
+.slide-info h2 {
+    font-size: 16px;
+}
+
+.slide-content h2 {
+    margin: 0;
+}
+
+.item {
+    margin: 8px 8px 8px 0;
+}
+
+.slide-play {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.list-video {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
+    justify-items: center;
+    align-items: center;
+}
+
+.slide-top{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 70px;
+    align-items: center;
+}
+.favorite{
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+}
+
+.score{
+    background-color: rgb(160, 118, 118);
+    color: rgb(235, 255, 242);
+    width: 25px;
+    height: 25px;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    border: 1.5px solid white;
 }

@@ -1,4 +1,40 @@
 <p>movies-page works!</p>
+<div  class="list-video">
+    <div class="card-video" *ngFor="let movie of movies">
+        <div class="owl-items">
+            <div class="slide-image"
+            [ngStyle]="{'background-image':imgFormater(movie.image)}"
+            >
+        </div>
+        <div class="slide-top">
+            <div class="favorite">
+                <i class="fas fa-heart"></i>
+            </div>
+            <div class="score">
+                <p><b>7.5</b></p>
+            </div>
+        </div>
+        <div class="slide-content">
+            <div class="slide-play item" [routerLink]="['/movie',movie.id]">
+                <i class="fas fa-play"></i>
+            </div>
+            <div class="slide-info item">
+                <h2>{{movie.title}}</h2>
+                <span class="tag">2 h 20 min</span>
+                <span class="tag">2020</span>
+                <span class="tag"><b>HD</b></span>
+                <span class="tag"><b>16+</b></span>
+            </div>
+            <div class="slide-add item">
+                <i class="fas fa-plus"></i>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+
 <div class="movie-card" *ngFor="let movie of movies" [routerLink]="['/movie',movie.id]">
     <p>{{movie.id}}</p>
     <p>{{movie.title}}</p>

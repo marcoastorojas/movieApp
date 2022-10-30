@@ -33,5 +33,8 @@ export class MoviesPageComponent implements OnInit {
     this.authService.removeFavorite(movieId)
       .subscribe((data: any) => { if (data.ok) { console.log("conexion deleted") } })
   }
+  imgFormater(image:string){
+    return `url('${image}')`
+  }
 
 }

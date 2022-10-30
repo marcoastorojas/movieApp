@@ -10,7 +10,7 @@ const db = new Sequelize(`postgres://zvsqjith:mBLM75Wh-lQZrgyZmnUZA-LlOWPWAoZw@m
     }
 });
 const connectPostgres = new Promise((resolve, reject) => {
-    db.sync({ force: false })
+    db.sync({ force: true })
         .then(resolve)
         .catch(reject)
 })
